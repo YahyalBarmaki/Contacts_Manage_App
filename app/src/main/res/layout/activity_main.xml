@@ -10,6 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/fond_home"
         tools:context=".MainActivity">
 
         <androidx.recyclerview.widget.RecyclerView
@@ -22,6 +23,7 @@
             app:layout_constraintTop_toTopOf="parent" />
         
         <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:src="@drawable/baseline_add_24"
             android:onClick="@{clickHandler::onFABClicked}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

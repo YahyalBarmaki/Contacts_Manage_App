@@ -1,9 +1,11 @@
 package com.example.contactsmanageapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -61,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
 
                         contactsArrayList.clear();
                         for (Contacts c: contacts){
-                        //    Log.v("TAGY",c.getName());
+                            Log.v("TAGY",c.getName());
                             contactsArrayList.add(c);
                         }
                         adapter.notifyDataSetChanged();
@@ -72,5 +74,20 @@ public class MainActivity extends AppCompatActivity {
         //adapter
         adapter = new MyAdapter(contactsArrayList);
         recyclerView.setAdapter(adapter);
+
+        //Swipe to delete
+
+        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.LEFT) {
+            @Override
+            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+                return false;
+            }
+
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+                Contacts c = contactsArrayList.get(viewHolder.getAdapterPosition());
+                myViewModel.deleteContact(c);
+            }
+        }).attachToRecyclerView(recyclerView);
     }
 }
