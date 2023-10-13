@@ -1,5 +1,7 @@
 package com.example.contactsmanageapp;
 
+import androidx.databinding.BaseObservable;
+import androidx.databinding.Bindable;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
@@ -32,6 +34,7 @@ public class Contacts {
         this.id = id;
     }
 
+
     public String getName() {
         return name;
     }
@@ -39,7 +42,6 @@ public class Contacts {
     public void setName(String name) {
         this.name = name;
     }
-
     public String getEmail() {
         return email;
     }

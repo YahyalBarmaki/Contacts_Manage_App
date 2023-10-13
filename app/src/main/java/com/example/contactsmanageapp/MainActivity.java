@@ -51,15 +51,17 @@ public class MainActivity extends AppCompatActivity {
         MyViewModel myViewModel = new ViewModelProvider(this).get(MyViewModel.class);
 
         //Insering a new contact
-        Contacts contacts1 = new Contacts("Yahya","yahya@gmail.com");
-        myViewModel.addNewContact(contacts1);
+       // Contacts contacts1 = new Contacts("Yahya","yahya@gmail.com");
+       // myViewModel.addNewContact(contacts1);
 
         myViewModel.getAllContacts().observe(this,
                 new Observer<List<Contacts>>() {
                     @Override
                     public void onChanged(List<Contacts> contacts) {
+
+                        contactsArrayList.clear();
                         for (Contacts c: contacts){
-                            Log.v("TAGY",c.getName());
+                        //    Log.v("TAGY",c.getName());
                             contactsArrayList.add(c);
                         }
                         adapter.notifyDataSetChanged();

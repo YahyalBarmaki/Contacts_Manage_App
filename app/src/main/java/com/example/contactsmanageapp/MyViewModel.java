@@ -3,6 +3,7 @@ package com.example.contactsmanageapp;
 import android.app.Application;
 
 import androidx.annotation.NonNull;
+import androidx.databinding.Bindable;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
@@ -29,7 +30,6 @@ public class MyViewModel extends AndroidViewModel {
     public void addNewContact(Contacts contacts){
         repository.addContact(contacts);
     }
-
     public void deleteContact(Contacts contacts){
         repository.deleteContact(contacts);
     }
